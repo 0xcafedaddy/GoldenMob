@@ -1,0 +1,740 @@
+/*@charset "utf-8";*/
+
+
+/* CSS Document */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, q, small, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, table, caption, tbody, thead, tbody, tfoot, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+    -webkit-text-size-adjust: none;
+    word-break: break-word;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    text-align: center;
+    min-height: 100%;
+    height: 100%;
+}
+
+ol {
+    list-style: inside decimal;
+}
+
+ul {
+    list-style: inside disc;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: '.AppleSystemUIFont', 'Source Sans Pro', Arial, sans-serif;
+}
+
+footer {
+    width: 100%;
+    height: 1px;
+}
+
+p, article, article table, h1, h2, h3, h4, h5, h6 {
+    color: #464646;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+    font-weight: 600;
+    color: #4e4e4e;
+    word-wrap: break-word;
+    margin: 10px 0
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #FFF;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100%;
+}
+
+img {
+    border: none;
+}
+
+p {
+    word-wrap: break-all;
+    margin-top: 0;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #E60033;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+a:active {
+    border: none;
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix:after {
+    content: " ";
+    height: 0px;
+    clear: both;
+}
+
+.logo {
+    font-size: 0px;
+    color: #FFF;
+    height: 50px;
+    display: inline-block;
+    line-height: 25px;
+    padding: 13px 13px 12px 13px;
+}
+
+.svg {
+    display: inline-block;
+    height: 25px;
+}
+
+svg {
+    height: 25px;
+    width: 25px;
+}
+
+svg.icon-facebook {
+    fill: #3b5998;
+    margin: 0;
+}
+
+svg.icon-newsdog {
+    position: relative;
+    width: 120px;
+    height: 25px;
+    fill: #FFF;
+    margin: 0;
+}
+
+header {
+    background-color: #e70034;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 10000;
+    text-align: center;
+}
+
+.facebook-like {
+    background-color: #FFF;
+    height: 24px;
+    padding: 0px 5px;
+    border-radius: 2px;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    display: block;
+    color: #3c5a99;
+    font-size: 10px;
+    line-height: 24px;
+    top: 14px;
+    vertical-align: middle;
+    padding-left: 24px;
+}
+
+.facebook-like .svg {
+    display: inline-block;
+    height: 16px;
+    font-size: 0;
+    vertical-align: middle;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+.facebook-like .svg svg {
+    width: 16px;
+    height: 16px;
+    fill: #3c5a99;
+}
+
+.download-app {
+    display: none;
+}
+
+nav {
+    width: 100%;
+    height: 36px;
+    overflow: hidden;
+    overflow-x: scroll;
+    position: fixed;
+    top: 50px;
+    background: #F6F6F6;
+    box-shadow: 0px 0px 1px 0px rgba(230, 0, 51, 1);
+    text-align: left;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+nav ul li {
+    list-style: none;
+    line-height: 36px;
+    display: inline-block;
+    font-size: 16px;
+    color: #4A4A4A;
+    height: 36px;
+}
+
+nav ul li.on {
+    color: #E60033;
+    border-bottom: 3px solid #E60033;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0 10px;
+    color: #4A4A4A;
+    font-weight: 400;
+}
+
+nav ul li.on a {
+    color: #E60033;
+}
+
+#articles-wrapper {
+    /*position: absolute;
+    top: 90px;
+    bottom: 0;
+    background-color: #FFF;
+    overflow: hidden;*/
+    margin-top: 90px;
+}
+
+.articles {
+    text-align: left;
+    background-color: #FFF;
+}
+
+.articles section {
+    margin: 0 10px;
+    border-bottom: 1px solid rgba(30, 30, 30, 0.16);
+    position: relative;
+}
+
+section a {
+    display: block;
+    padding: 5px 0;
+    position: relative;
+}
+
+section h2.title {
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0px 0 5px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+section .meta {
+    font-size: 10px;
+    color: #9B9B9B;
+    vertical-align: middle;
+    line-height: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}
+
+section .meta-hidden {
+    height: 20px;
+    width: 100%;
+    display: block;
+}
+
+section.no-images .meta-hidden, section.three-images .meta-hidden {
+    height: 20px;
+    width: 100%;
+    display: block;
+}
+
+section .meta .hot, section .meta .trending, section .meta .promotion {
+    display: inline-block;
+    height: 8px;
+    color: #FF2213;
+    font-size: 6px;
+    border: 1px solid #FF2213;
+    padding: 0px 3px;
+    line-height: 8px;
+    background-color: #FFF1F0;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+.facebookAd {
+    display: none;
+}
+
+.facebookAd.on {
+    display: block;
+}
+
+section .meta .promotion {
+    color: #60C4B0;
+    border: 1px solid #60C4B0;
+    background-color: #E7F8F5;
+}
+
+section .meta .promotion::after {
+    content: "Promotion";
+}
+
+section .meta .hot::after {
+    content: "Hot";
+}
+
+section .meta .trending::after {
+    content: "Trending";
+}
+
+section .source {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+section .time {
+    vertical-align: middle;
+}
+
+section .images {
+    font-size: 0;
+}
+
+section.one-images a {
+    padding-right: 32%;
+    min-height: 80px;
+}
+
+section.one-images a .images {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+section .image {
+    display: inline-block;
+    margin-left: 10px;
+    overflow: hidden;
+    background-color: #D8D8D8;
+    background-image: url('http://static.newsdog.today/article/images/logo.svg');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 90px;
+    height: 60px;
+}
+
+section .image img {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+
+.facebookAd .image img {
+    opacity: 1;
+}
+
+section .image img.show {
+    opacity: 1;
+}
+
+section .image.h100 img {
+    width: auto;
+    height: 100%;
+}
+
+section .image:first-child {
+    margin-left: 0;
+}
+
+.nextPageBtn {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+}
+
+.nextPageBtn:after {
+    content: "Tap to load more news";
+}
+
+.nextPageBtn.loading:after {
+    content: "Loading...";
+}
+
+.bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #dcdcdc;
+    vertical-align: top;
+    z-index: 1000;
+    text-align: left;
+}
+
+.bar-hidden {
+    height: 50px;
+}
+
+.close_btn {
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    margin: 12px 6px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 1px solid #bebebe;
+    position: relative;
+    display: none;
+}
+
+.close_btn::before, .close_btn::after {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 10px;
+    top: 6px;
+    content: " ";
+    background-color: #bebebe;
+    vertical-align: top;
+}
+
+.close_btn::before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.close_btn::after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.bar .icon {
+    width: 40px;
+    height: 40px;
+    background-image: url('../../images/icon.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 2px 5px 5px;
+}
+
+.bar .text {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    right: 84px;
+    bottom: 0;
+    display: inline-block;
+    height: 40px;
+    margin: 5px 0px 0px 0px;
+    vertical-align: top;
+}
+
+.bar .text h6 {
+    display: none;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 20px;
+    height: 24px;
+    font-weight: normal;
+    color: #333;
+}
+
+.bar .text span {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 16px;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 500;
+    color: #333;
+}
+
+.bar .text span b {
+    color: #E60033;
+}
+
+.bar .app_download {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #ed3d64;
+    color: #FFF;
+    font-size: 16px;
+    line-height: 29px;
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 800px) {
+    .articles {
+        width: 790px;
+        padding-left: 150px;
+        margin: 0 auto;
+    }
+    .bar {
+        display: none;
+    }
+    section h2.title {
+        font-size: 20px;
+    }
+    section .image {
+        background-size: 50px 50px;
+        width: 200px;
+        height: 133px;
+    }
+    section.one-images a {
+        min-height: 153px;
+        padding-right: 210px;
+    }
+    /*#articles-wrapper {
+        left: 50%;
+        margin-left: -320px;
+    }*/
+    section a:hover .title {
+        color: #E60033;
+    }
+    section a:visited .title {
+        color: #999;
+    }
+    section .meta {
+        font-size: 12px;
+        color: #9B9B9B;
+        vertical-align: middle;
+        line-height: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+    }
+    section .meta-hidden {
+        height: 12px;
+        width: 100%;
+        display: block;
+    }
+    section.no-images .meta-hidden, section.three-images .meta-hidden {
+        height: 22px;
+        width: 100%;
+        display: block;
+    }
+    section .meta .hot, section .meta .trending, section .meta .promotion {
+        display: inline-block;
+        height: 12px;
+        color: #FF2213;
+        font-size: 10px;
+        border: 1px solid #FF2213;
+        padding: 0px 3px;
+        line-height: 10px;
+        background-color: #FFF1F0;
+        border-radius: 2px;
+        vertical-align: middle;
+    }
+    section .meta .promotion {
+        color: #60C4B0;
+        border: 1px solid #60C4B0;
+        background-color: #E7F8F5;
+    }
+    section .meta .hot::after {
+        content: "Hot";
+    }
+    section .meta .trending::after {
+        content: "Trending";
+    }
+    section .meta .promotion::after {
+        content: "Promotion";
+    }
+    section .source {
+        margin-right: 12px;
+        vertical-align: middle;
+    }
+    section .time {
+        vertical-align: middle;
+    }
+    header {
+        height: 80px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 10000;
+    }
+    .logo {
+        font-size: 0px;
+        color: #FFF;
+        height: 40px;
+        display: inline-block;
+        line-height: 25px;
+        position: absolute;
+        margin-left: -417px;
+        margin-top: -20px;
+        top: 50%;
+        padding: 0;
+    }
+    .svg {
+        display: inline-block;
+        height: 40px;
+    }
+    svg.icon-newsdog {
+        position: relative;
+        width: 220px;
+        height: 40px;
+        fill: #FFF;
+        margin: 0;
+    }
+    .facebook-like {
+        background-color: #FFF;
+        height: 28px;
+        padding: 0px 10px;
+        border-radius: 2px;
+        position: absolute;
+        right: 50%;
+        margin-right: -225px;
+        display: block;
+        color: #3c5a99;
+        font-size: 14px;
+        line-height: 28px;
+        top: 26px;
+        vertical-align: middle;
+        padding-left: 30px;
+    }
+    .facebook-like .svg {
+        display: inline-block;
+        height: 20px;
+        font-size: 0;
+        vertical-align: middle;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+    }
+    .facebook-like .svg svg {
+        width: 20px;
+        height: 20px;
+    }
+    .download-app {
+        position: absolute;
+        right: 50%;
+        margin-right: -405px;
+        width: 150px;
+        display: block;
+        color: #FFF;
+        font-size: 16px;
+        height: 30px;
+        line-height: 28px;
+        border: 1px solid #FFF;
+        top: 25px;
+        border-radius: 15px;
+    }
+    .download-app:hover {
+        background-color: #FFF;
+        color: #E60033;
+    }
+    nav {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        margin-left: -405px;
+        text-align: left;
+        z-index: 100;
+        width: 150px;
+        float: left;
+        background-color: #FFF;
+        box-shadow: none;
+        border-right: 1px solid #E60033;
+        bottom: 0;
+        padding-top: 20px;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        font-size: 0;
+        overflow: visible;
+        white-space: nowrap;
+    }
+    nav ul li {
+        list-style: none;
+        line-height: 30px;
+        display: block;
+        font-size: 18px;
+        color: #4A4A4A;
+        height: 40px;
+        padding: 5px 0;
+    }
+    nav ul li.on {
+        border-bottom: none;
+    }
+    nav ul li a {
+        display: block;
+        padding: 0 10px;
+        color: #787878;
+        font-weight: 600;
+        border-left: 0px solid #E60033;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+    nav ul li.on a {
+        color: #E60033;
+        border-left: 5px solid #E60033;
+    }
+    #articles-wrapper {
+        /*position: absolute;
+    top: 90px;
+    bottom: 0;
+    background-color: #FFF;
+    overflow: hidden;*/
+        margin-top: 100px;
+    }
+}
