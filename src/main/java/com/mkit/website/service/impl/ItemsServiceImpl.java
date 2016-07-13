@@ -40,11 +40,17 @@ public class ItemsServiceImpl implements ItemsService{
 		searchRequestBuilder.setTypes("webpage");
 		searchRequestBuilder.setSearchType(SearchType.DFS_QUERY_THEN_FETCH);
 		searchRequestBuilder.setExplain(true);
-		searchRequestBuilder
-				.setQuery(queryBuilder)
-				.addSort(
+		if(app_category != null){
+			searchRequestBuilder
+			.setQuery(queryBuilder)
+			.addSort(
+					SortBuilders.fieldSort("add_time")
+							.order(SortOrder.DESC)).setFrom(start).setSize(10);
+		}else{
+		searchRequestBuilder.addSort(
 						SortBuilders.fieldSort("add_time")
 								.order(SortOrder.DESC)).setFrom(start).setSize(10);
+		}
 		SearchResponse repsonse = searchRequestBuilder.execute().actionGet();
 		SearchHits searchHits = repsonse.getHits();
 		SearchHit[] hits = searchHits.getHits();

@@ -26,7 +26,7 @@ public class MainController {
 		System.out.println("start: "+start);
 		
 		if( read_tag == null || start == null){
-			read_tag = "car";
+			//read_tag = "car";
 			start = 0;
 		}
 		
