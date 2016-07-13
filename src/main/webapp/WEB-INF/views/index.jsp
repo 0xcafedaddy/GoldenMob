@@ -37,20 +37,20 @@
                 
                 <li ><a href="/">For you</a></li>
                 <li class="on"><a href="/entertainment/">Entertainment</a></li>
-                <li ><a href="/cricket/">Cricket</a></li>
-                <li ><a href="/politics/">Politics</a></li>
-                <li ><a href="/technology/">Technology</a></li>
-                <li ><a href="/health/">Health</a></li>
-                <li ><a href="/lifestyle/">Lifestyle</a></li>
-                <li ><a href="/sports/">Sports</a></li>
-                <li ><a href="/education/">Education</a></li>
-                <li ><a href="/business/">Business</a></li>
-                <li ><a href="/national/">National</a></li>
-                <li ><a href="/world/">World</a></li>
-                <li ><a href="/auto/">Auto</a></li>
+                <li ><a href="./politic/">Politic</a></li>
+                <li ><a href="./ent/">Entertainment</a></li>
+                <li ><a href="./sports/">Sports</a></li>
+                <li ><a href="./health/">Health</a></li>
+                <li ><a href="./life/">Life</a></li>
+                <li ><a href="./fun/">Fun</a></li>
+                <li ><a href="./tech/">Technology</a></li>
+                <li ><a href="./arts/">Arts</a></li>
+                <li ><a href="./culture/">Culture</a></li>
+                <li ><a href="./business/">Business</a></li>
+                <li ><a href="./fashion/">Fashion</a></li>
+                <li ><a href="./motivation/">Motivation</a></li>
             </ul>
         </nav>
-
 
         <div id="articles-wrapper">
         <div class="articles">
@@ -76,8 +76,11 @@
 				</span>
 			</a>
 		</section>
-        </c:forEach>        
-        <a class="nextPageBtn" href="?read_tag='news'&start=1"></a>
+        </c:forEach>
+        
+       
+                
+        <a class="nextPageBtn" href="?read_tag='fun'"></a>
     
         </div>
         </div>

@@ -30,10 +30,10 @@ public class ItemsServiceImpl implements ItemsService{
 	private Client client;
 	
 	@Override
-	public List<Item> findByCategory(String app_category) {
+	public List<Item> findByCategory(String app_category,Integer start) {
 		
 		QueryBuilder queryBuilder = QueryBuilders.boolQuery().must(
-				QueryBuilders.matchQuery("app_category", "sports"));
+				QueryBuilders.matchQuery("app_category", app_category));
 
 		SearchRequestBuilder searchRequestBuilder = client
 				.prepareSearch("holga_index");
@@ -44,7 +44,7 @@ public class ItemsServiceImpl implements ItemsService{
 				.setQuery(queryBuilder)
 				.addSort(
 						SortBuilders.fieldSort("add_time")
-								.order(SortOrder.DESC)).setFrom(0).setSize(10);
+								.order(SortOrder.DESC)).setFrom(start).setSize(10);
 		SearchResponse repsonse = searchRequestBuilder.execute().actionGet();
 		SearchHits searchHits = repsonse.getHits();
 		SearchHit[] hits = searchHits.getHits();

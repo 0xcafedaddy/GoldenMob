@@ -96,13 +96,26 @@ $(function() {
             }
         }
     });
+    
+    var count = 10;
+    
     var loadNextPage = function(scrollTop) {
+    	//alert("loadNextPage");
+    	
         if ($(".nextPageBtn").hasClass('loading')) {
             return false;
         }
         var url = $(".nextPageBtn").attr("href");
         $(".nextPageBtn").addClass('loading');
+        
+        var str = "&start=5";
+
+        url = url + "&start="+count;
+
+        //alert(url);
+
         $.get(url, function(d) {
+        	count+=10;
             $(".articles .nextPageBtn").remove();
             var sections = $($(d).find(".articles").html());
             sections.data("url", url);
@@ -125,6 +138,12 @@ $(function() {
                 $(this).addClass('show');
             });
         });
+        
+        //$.get();
+
+
+
+
 //        $.getScript('//connect.facebook.net/en_US/sdk/xfbml.ad.js?_=" + new Date().getTime() + "#xfbml=1&version=v2.5&appId=508207026019625', function() {
 //            FB.init({
 //                appId: '508207026019625',

@@ -15,6 +15,6 @@ public interface ItemsService {
 	/**
 	 * 查询Items
 	 */
-	public List<Item> findByCategory(String app_category);
+	public List<Item> findByCategory(String app_category,Integer start);
 	
 }
