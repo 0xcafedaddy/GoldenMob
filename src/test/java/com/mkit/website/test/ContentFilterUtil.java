@@ -1,4 +1,10 @@
-
+/************************************************
+@description:ContentFilterUtil.java是用来过滤文章内容
+，在返回客户端之前，进行相应的转换。
+@author:shishansong
+@date:2016年6月21日 下午3:34:43
+@version:1.0 
+*************************************************/
 package com.mkit.website.test;
 
 import java.net.URI;
@@ -11,6 +17,14 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.search.SearchHit;
+
+
+/***
+ * 解析查询出来的内容
+ * @author yang
+ *
+ */
+
 
 public class ContentFilterUtil {
 	public static String getSpecialDomain(String domain,String author) {
@@ -118,7 +132,7 @@ public class ContentFilterUtil {
 		}
 		else if ("brideeveryday.com".equals(domain)){
 			String smallImg = imageUrl.replace(".jpg", "-300x200.jpg");
-			//if (content.indexOf(smallImg)>=0){鏈夌壒娈婂瓧绗︾紪鐮佺殑闂锛屾湁鐨勭紪鐮侊紝鏈夌殑娌℃湁缂栫爜锛屾殏鏃舵斁杩囪繖涓潯浠躲�
+			//if (content.indexOf(smallImg)>=0){有特殊字符编码的问题，有的编码，有的没有编码，暂时放过这个条件。
 				if (smallImg.indexOf("//")==0){
 					smallImg = "http:"+smallImg;
 				}
@@ -161,110 +175,110 @@ public class ContentFilterUtil {
 	}
 	public static void getTopicList(SearchHit[] hits,
 			List<TopicJson> resultList,Integer bid) {
-		//鍒ら噸鍑嗗
+		//判重准备
 		int hitCount = hits.length;
 		//Map<String,String> titleMap = new HashMap<String,String>(hitCount);
 		//Map<String,String> urlMap = new HashMap<String,String>(hitCount);
 		//Map<String,String> contentMap = new HashMap<String,String>(hitCount);
-		//涓変釜map浼间箮娌℃湁锛屽垽閲嶄箣鍚庢病鏈夊悗缁伐浣�
+		//三个map似乎没有，判重之后没有后续工作
 		final String FLAG_EXIST = "1";
 		for (int i = 0; i < hitCount; i++) {
         	TopicJson topic = new TopicJson();
             SearchHit hit = hits[i];
-
-            Map<String, Object> hitSource = hit.getSource();
-            String title = CommonUtils.getString(hitSource.get("title"));
-            //====鎺掗噸
-            /*if (FLAG_EXIST.equals(titleMap.get(title))){
-            	continue;
-            }else{
-            	titleMap.put(title, FLAG_EXIST);
-            }*/
-            
-            String url = CommonUtils.getString(hitSource.get("url"));
-           /* if (FLAG_EXIST.equals(urlMap.get(url))){
-            	continue;
-            }else{
-            	urlMap.put(url, FLAG_EXIST);
-            }*/
-            
-            String domain = CommonUtils.getString(hitSource.get("domain"));
-            Map content = (Map) hitSource.get("content");
-
-            String tcontent = CommonUtils.getString(content.get("tcontent"));//getString(hit.getSource().get("content.tcontent"));
-            System.out.println("--------------------------------------uuid is:"+CommonUtils.getString(hitSource.get("uuid")));
-            tcontent = ContentFilterUtil.replaceImgOfContent(domain,tcontent);
-           /* if (FLAG_EXIST.equals(contentMap.get(tcontent))){
-            	continue;
-            }else{
-            	contentMap.put(tcontent, FLAG_EXIST);
-            }*/
-            //======
+//
+//            Map<String, Object> hitSource = hit.getSource();
+//            String title = CommonUtils.getString(hitSource.get("title"));
+//            //====排重
+//            /*if (FLAG_EXIST.equals(titleMap.get(title))){
+//            	continue;
+//            }else{
+//            	titleMap.put(title, FLAG_EXIST);
+//            }*/
+//            
+//            String url = CommonUtils.getString(hitSource.get("url"));
+//           /* if (FLAG_EXIST.equals(urlMap.get(url))){
+//            	continue;
+//            }else{
+//            	urlMap.put(url, FLAG_EXIST);
+//            }*/
+//            
+//            String domain = CommonUtils.getString(hitSource.get("domain"));
+//            Map content = (Map) hitSource.get("content");
+//
+//            String tcontent = CommonUtils.getString(content.get("tcontent"));//getString(hit.getSource().get("content.tcontent"));
+//            System.out.println("--------------------------------------uuid is:"+CommonUtils.getString(hitSource.get("uuid")));
+//            tcontent = ContentFilterUtil.replaceImgOfContent(domain,tcontent);
+//           /* if (FLAG_EXIST.equals(contentMap.get(tcontent))){
+//            	continue;
+//            }else{
+//            	contentMap.put(tcontent, FLAG_EXIST);
+//            }*/
+//            //======
             
            
-            List<Map> imageList = (ArrayList) content.get("image");
+           // List<Map> imageList = (ArrayList) content.get("image");
             
             
-            List<ImportImage> imgList = new ArrayList();
-            for (Map image : imageList) {
-                String imageH = CommonUtils.getString(image.get("h"));
-                String imageW = CommonUtils.getString(image.get("w"));
-                String imageUrl = CommonUtils.getString(image.get("url"));
-                
-                imageUrl = ContentFilterUtil.getFastImageUrl(imageUrl,domain,tcontent);
-                
-                
-                
-            	ImportImage importImage = new ImportImage();
-                importImage.setUrl(imageUrl);
-                importImage.setH(imageH);
-                importImage.setW(imageW);
-                imgList.add(importImage);
-			}
-            
-
-            String id = CommonUtils.getString(hitSource.get("id"));
-            String keywords = CommonUtils.getString(hitSource.get("keywords"));
-            String userId = CommonUtils.getString(hitSource.get("user_id"));
-            String addTime = CommonUtils.getString(hitSource.get("add_time"));
-            //String category = CommonUtils.getString(hitSource.get("category"));
-            String author = CommonUtils.getString(hitSource.get("author"));
-            
-            String uuid = CommonUtils.getString(hitSource.get("uuid"));
-            Integer imageCount = CommonUtils.getInt(hitSource.get("image_count"));
-            String max3Hash = CommonUtils.getString(hitSource.get("max3hash"));
-            String appCategory = CommonUtils.getString(hitSource.get("app_category"));
-            TopicCount topicActCount = TopicCountUtil.getTopicCountNoSetRedis(uuid);
-    		TopicContent topicContent =new TopicContent();
-    		topicContent.setImage(imgList);
-    		topicContent.setTcontent(tcontent);
-    		
-    		topic.setContent(topicContent.toJson());
-
-    		
-    		domain = ContentFilterUtil.getSpecialDomain(domain,author);//sss added 0615
-    		
-    		topic.setDomain(domain);
-
-    		topic.setImageCount(imageCount);
-    		topic.setUuid(uuid);
-    		topic.setCid(bid.toString());
-    		topic.setMax3Hash(max3Hash);
-    		topic.setCategory(appCategory);
-    		topic.setAppCategory(appCategory);
-    		//鍖呭惈id,nick锛宖ace,name鐨勪竴涓疄浣�
-    		UserShortJson userShortJson = new UserShortJson();
-    		userShortJson.setId(userId);
-            topic.setUinfo(userShortJson);
-            topic.setTid(id);
-            topic.setTitle(title);
-            
-            topic.setUrl(url);
-            //topic.setSource(getSourceFromUrl(url));
-            topic.setKeywords(keywords);
-            topic.setAtime(addTime);
-            topic.setAuthor(author);
-            topic.setTaCount(topicActCount.toJson());
+//            List<ImportImage> imgList = new ArrayList();
+//            for (Map image : imageList) {
+//                String imageH = CommonUtils.getString(image.get("h"));
+//                String imageW = CommonUtils.getString(image.get("w"));
+//                String imageUrl = CommonUtils.getString(image.get("url"));
+//                
+//                imageUrl = ContentFilterUtil.getFastImageUrl(imageUrl,domain,tcontent);
+//                
+//                
+//                
+//            	ImportImage importImage = new ImportImage();
+//                importImage.setUrl(imageUrl);
+//                importImage.setH(imageH);
+//                importImage.setW(imageW);
+//                imgList.add(importImage);
+//			}
+//            
+//
+//            String id = CommonUtils.getString(hitSource.get("id"));
+//            String keywords = CommonUtils.getString(hitSource.get("keywords"));
+//            String userId = CommonUtils.getString(hitSource.get("user_id"));
+//            String addTime = CommonUtils.getString(hitSource.get("add_time"));
+//            //String category = CommonUtils.getString(hitSource.get("category"));
+//            String author = CommonUtils.getString(hitSource.get("author"));
+//            
+//            String uuid = CommonUtils.getString(hitSource.get("uuid"));
+//            Integer imageCount = CommonUtils.getInt(hitSource.get("image_count"));
+//            String max3Hash = CommonUtils.getString(hitSource.get("max3hash"));
+//            String appCategory = CommonUtils.getString(hitSource.get("app_category"));
+//            TopicCount topicActCount = TopicCountUtil.getTopicCountNoSetRedis(uuid);
+//    		TopicContent topicContent =new TopicContent();
+//    		topicContent.setImage(imgList);
+//    		topicContent.setTcontent(tcontent);
+//    		
+//    		topic.setContent(topicContent.toJson());
+//
+//    		
+//    		domain = ContentFilterUtil.getSpecialDomain(domain,author);//sss added 0615
+//    		
+//    		topic.setDomain(domain);
+//
+//    		topic.setImageCount(imageCount);
+//    		topic.setUuid(uuid);
+//    		topic.setCid(bid.toString());
+//    		topic.setMax3Hash(max3Hash);
+//    		topic.setCategory(appCategory);
+//    		topic.setAppCategory(appCategory);
+//    		//包含id,nick，face,name的一个实体
+//    		UserShortJson userShortJson = new UserShortJson();
+//    		userShortJson.setId(userId);
+//            topic.setUinfo(userShortJson);
+//            topic.setTid(id);
+//            topic.setTitle(title);
+//            
+//            topic.setUrl(url);
+//            //topic.setSource(getSourceFromUrl(url));
+//            topic.setKeywords(keywords);
+//            topic.setAtime(addTime);
+//            topic.setAuthor(author);
+//            topic.setTaCount(topicActCount.toJson());
             
            /* BarJson binfo = new BarJson();
             binfo.setName("hellokitty");

@@ -13,6 +13,7 @@ public class Item {
 	private String author;
 	private String postDate;
 	private String imgURL;
+	private String uuid;
 	
 	
 	public String getTitle() {
@@ -39,11 +40,16 @@ public class Item {
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
 	}
-	
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	@Override
 	public String toString() {
-		return "Items [title=" + title + ", author=" + author + ", postDate="
-				+ postDate + ", imgURL=" + imgURL + "]";
+		return "Item [title=" + title + ", author=" + author + ", postDate="
+				+ postDate + ", imgURL=" + imgURL + ", uuid=" + uuid + "]";
 	}
 	
 }

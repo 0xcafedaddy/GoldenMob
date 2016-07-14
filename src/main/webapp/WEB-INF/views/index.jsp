@@ -24,31 +24,130 @@
      
     </head>
     <body class="en">
-        <header>
+        <header >
             <a class="logo" href="/">
                 <span class="svg"><svg class="icon icon-newsdog"><use xlink:href="#icon-newsdog"></use></svg></span>
             </a> 
-            <a class="facebook-like" href="https://www.facebook.com/newsdogapp/" target="_blank"><span class="svg"><svg class="icon icon-facebook"><use xlink:href="#icon-Facebook"></use></svg></span>Follow Us</a>
             <a class="download-app" href="/app">Download App</a>
         </header>
 
         <nav  class="navbar">
             <ul>
-                
-                <li ><a href="/">For you</a></li>
-                <li class="on"><a href="/entertainment/">Entertainment</a></li>
-                <li ><a href="./politic/">Politic</a></li>
-                <li ><a href="./ent/">Entertainment</a></li>
-                <li ><a href="./sports/">Sports</a></li>
-                <li ><a href="./health/">Health</a></li>
-                <li ><a href="./life/">Life</a></li>
-                <li ><a href="./fun/">Fun</a></li>
-                <li ><a href="./tech/">Technology</a></li>
-                <li ><a href="./arts/">Arts</a></li>
-                <li ><a href="./culture/">Culture</a></li>
-                <li ><a href="./business/">Business</a></li>
-                <li ><a href="./fashion/">Fashion</a></li>
-                <li ><a href="./motivation/">Motivation</a></li>
+	            	<c:choose> 
+            			<c:when test="${sessionScope.flag == '/' }">
+            				<li  class="on"><a href="${ctx }/">For you</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/">For you</a></li>
+            			</c:otherwise>
+            		</c:choose>
+	            	
+            		<c:choose> 
+            			<c:when test="${sessionScope.flag == 'ent' }">
+            				<li class="on"><a href="${ctx }/ent/" ">Entertainment</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/ent/" ">Entertainment</a></li>
+            			</c:otherwise>
+            		</c:choose>
+            		
+            		<c:choose> 
+            			<c:when test="${sessionScope.flag == 'politic' }">
+            				<li class="on"><a href="${ctx }/politic/">Politic</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/politic/">Politic</a></li>
+            			</c:otherwise>
+            		</c:choose>
+	                	
+	                <c:choose> 
+            			<c:when test="${sessionScope.flag == 'sports' }">
+            				<li class="on"><a href="${ctx }/sports/">Sports</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				 <li ><a href="${ctx }/sports/">Sports</a></li>
+            			</c:otherwise>
+            		</c:choose>	
+	                <c:choose> 
+            			<c:when test="${sessionScope.flag == 'health' }">
+            				<li class="on"><a href="${ctx }/health/">Health</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				 <li ><a href="${ctx }/health/">Health</a></li>
+            			</c:otherwise>
+            		</c:choose>	
+            		
+            		 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'life' }">
+            				<li class="on"><a href="${ctx }/life/">Life</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				 <li ><a href="${ctx }/life/">Life</a></li>
+            			</c:otherwise>
+            		</c:choose>	
+            		
+            		 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'fun' }">
+            				<li class="on"><a href="${ctx }/fun/">Fun</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/fun/">Fun</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+	                
+	                 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'tech' }">
+            				<li class="on"><a href="${ctx }/tech/">Technology</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/tech/">Technology</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+            		
+            		 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'arts' }">
+            				<li class="on"><a href="${ctx }/arts/">Arts</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/arts/">Arts</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+            		
+            		 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'culture' }">
+            				<li class="on"><a href="${ctx }/culture/">Culture</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/culture/">Culture</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+	                
+            		 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'business' }">
+            				<li class="on"><a href="${ctx }/business/">Business</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/business/">Business</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+	                
+	                 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'fashion' }">
+            				<li class="on"><a href="${ctx }/fashion/">Fashion</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/fashion/">Fashion</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
+	                
+	                 <c:choose> 
+            			<c:when test="${sessionScope.flag == 'motivation' }">
+            				<li class="on"><a href="${ctx }/motivation/">Motivation</a></li>
+            			</c:when>
+            			<c:otherwise>
+            				<li ><a href="${ctx }/motivation/">Motivation</a></li>
+            			</c:otherwise>
+            		</c:choose>	 	
             </ul>
         </nav>
 
@@ -62,7 +161,7 @@
         
         <c:forEach items="${sessionScope.itemList}" var="item" varStatus="vs">
 		 <section class="one-images">
-			<a href="/a/article/5783200276f3dfd9674ed057/" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
+			<a href="${ctx}/a/?uuid=${item.uuid}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
 				<h2 class="title">${item.title }</h2>
 				<div class="images">
 					<span class="image" data-width="200" data-height="350" style="width: 200px; height: 133.333px;">
@@ -77,15 +176,12 @@
 			</a>
 		</section>
         </c:forEach>
-        
-       
                 
-        <a class="nextPageBtn" href="?read_tag='fun'"></a>
+        <a class="nextPageBtn" href="?start="></a>
     
         </div>
         </div>
         <script type="text/javascript" src="http://static.newsdog.today/javascripts/lib/jquery-2.2.3.min.js"></script>
-        <script type="text/javascript" src="http://static.newsdog.today/javascripts/news/index.js"></script>
-
+       
     </body>
 </html>

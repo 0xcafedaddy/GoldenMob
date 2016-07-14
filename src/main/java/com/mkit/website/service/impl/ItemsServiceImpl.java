@@ -66,7 +66,8 @@ public class ItemsServiceImpl implements ItemsService{
 
 			item.setTitle(TransToString.getString(hitSource.get("title")));
 			item.setAuthor(TransToString.getString(hitSource.get("author")));
-			item.setPostDate((String) hitSource.get("post_date"));
+			item.setPostDate((String) hitSource.get("add_time"));
+			item.setUuid((String) hitSource.get("uuid"));
 
 			// 如果imageList不为空取第一张图片
 			@SuppressWarnings("unchecked")

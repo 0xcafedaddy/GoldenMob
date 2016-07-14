@@ -26,14 +26,42 @@ public class MainController {
 		System.out.println("start: "+start);
 		
 		if( read_tag == null || start == null){
-			//read_tag = "car";
 			start = 0;
 		}
-		
+	
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "/");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}
+	
+	
+	@RequestMapping(value = {"ent"}, method = RequestMethod.GET) 
+	public String ent(HttpServletRequest request, HttpServletResponse response,Integer start){
+		System.out.println("ent");
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "ent";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "ent");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"politic"}, method = RequestMethod.GET) 
+	public String politic(HttpServletRequest request, HttpServletResponse response,Integer start){
+		System.out.println("politic");
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "politic";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "politic");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
 	
 	@RequestMapping(value = {"sports"}, method = RequestMethod.GET) 
 	public String sports(HttpServletRequest request, HttpServletResponse response,Integer start){
@@ -43,6 +71,7 @@ public class MainController {
 		}
 		String read_tag = "sports";
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "sports");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}
@@ -56,12 +85,13 @@ public class MainController {
 		}
 		String read_tag = "health";
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "health");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}
 	
 	
-	@RequestMapping(value = {"life"}, method = RequestMethod.GET) 
+	@RequestMapping(value = {"/life"}, method = RequestMethod.GET) 
 	public String life(HttpServletRequest request, HttpServletResponse response,Integer start){
 		System.out.println("life");
 		if(start == null){
@@ -69,11 +99,12 @@ public class MainController {
 		}
 		String read_tag = "life";
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "life");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}
 	
-	@RequestMapping(value = {"fun"}, method = RequestMethod.GET) 
+	@RequestMapping(value = {"/fun"}, method = RequestMethod.GET) 
 	public String fun(HttpServletRequest request, HttpServletResponse response,Integer start){
 		System.out.println("fun");
 		if(start == null){
@@ -81,17 +112,79 @@ public class MainController {
 		}
 		String read_tag = "fun";
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "fun");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}
 
-	@RequestMapping(value = {"tech"}, method = RequestMethod.GET) 
+	@RequestMapping(value = {"/tech"}, method = RequestMethod.GET) 
 	public String tech(HttpServletRequest request, HttpServletResponse response,Integer start){
 		if(start == null){
 			start = 0;
 		}
 		String read_tag = "tech";
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "tech");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/arts"}, method = RequestMethod.GET) 
+	public String arts(HttpServletRequest request, HttpServletResponse response,Integer start){
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "arts";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "arts");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/culture"}, method = RequestMethod.GET) 
+	public String culture(HttpServletRequest request, HttpServletResponse response,Integer start){
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "culture";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "culture");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/business"}, method = RequestMethod.GET) 
+	public String business(HttpServletRequest request, HttpServletResponse response,Integer start){
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "business";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "business");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/fashion"}, method = RequestMethod.GET) 
+	public String fashion(HttpServletRequest request, HttpServletResponse response,Integer start){
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "fashion";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "fashion");
+		request.getSession().setAttribute("itemList", itemList);
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/motivation"}, method = RequestMethod.GET) 
+	public String motivation(HttpServletRequest request, HttpServletResponse response,Integer start){
+		if(start == null){
+			start = 0;
+		}
+		String read_tag = "motivation";
+		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
+		request.getSession().setAttribute("flag", "motivation");
 		request.getSession().setAttribute("itemList", itemList);
 		return "index";
 	}

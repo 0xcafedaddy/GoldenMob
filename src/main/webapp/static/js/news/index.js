@@ -21,9 +21,11 @@ $(function() {
 //            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
 //        });
 //    });
-    var url = "http://m.onelink.me/ed2d56a1";
+    var url = "http://www.qq.com";
     if (navigator.userAgent.match(/Android/)) {
-        var url = "https://app.appsflyer.com/com.newsdog.lite?pid=Portal&c=List&af_r=http://newsdog.today/a/downloads/";
+    	//设置不显示头
+    	
+    	var url = "http://cn.bing.com";
     }
     $("body").append($('<div class="bar">\
     <div class="close_btn">\
@@ -35,10 +37,10 @@ $(function() {
     NewsDog\
     </h6>\
     <span>\
-    Not using <b>NewsDog</b> yet?\
+    Not using <b>DailyMasala</b> yet?\
     </span>\
     </div>\
-    <a class="app_download" href="https://app.appsflyer.com/com.newsdog.lite?pid=Portal&c=List&af_r=http://newsdog.today/a/downloads/" target="_blank">\
+    <a class="app_download" href="'+url+'" target="_blank">\
     Get App\
     </a>\
     <div class="bar-hidden">\
@@ -100,25 +102,28 @@ $(function() {
     var count = 10;
     
     var loadNextPage = function(scrollTop) {
-    	//alert("loadNextPage");
     	
         if ($(".nextPageBtn").hasClass('loading')) {
             return false;
         }
+        
         var url = $(".nextPageBtn").attr("href");
         $(".nextPageBtn").addClass('loading');
         
+        console.log("url1:"+url);
         var str = "&start=5";
 
-        url = url + "&start="+count;
-
+        //url = url + "&start="+count;
+        url = url + count;
+        console.log("url2:"+url);
         //alert(url);
 
         $.get(url, function(d) {
         	count+=10;
             $(".articles .nextPageBtn").remove();
             var sections = $($(d).find(".articles").html());
-            sections.data("url", url);
+            //sections.data("url", url);
+  
             sections.appendTo('.articles');
             $(".image").width(imgWidth);
             $(".image").height(imgHeight);
@@ -139,11 +144,17 @@ $(function() {
             });
         });
         
-        //$.get();
-
-
-
-
+        
+        //定义全局变量
+        var category = null;
+        
+        //获取类别
+        function getCategory(cate){
+        	//this.category = $('#category').val();
+        	this.category = cate;
+        	alert(category);
+        }
+       // $.get("");
 //        $.getScript('//connect.facebook.net/en_US/sdk/xfbml.ad.js?_=" + new Date().getTime() + "#xfbml=1&version=v2.5&appId=508207026019625', function() {
 //            FB.init({
 //                appId: '508207026019625',
