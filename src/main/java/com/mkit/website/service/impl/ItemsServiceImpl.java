@@ -63,7 +63,9 @@ public class ItemsServiceImpl implements ItemsService{
 			Map<String, Object> hitSource = hit.getSource();
 			@SuppressWarnings("rawtypes")
 			Map content = (Map) hitSource.get("content");
-
+			
+			item.setKeyWords(TransToString.getString(hitSource.get("keywords")));
+			item.setCategory(TransToString.getString(hitSource.get("app_category")));
 			item.setTitle(TransToString.getString(hitSource.get("title")));
 			item.setAuthor(TransToString.getString(hitSource.get("author")));
 			item.setPostDate((String) hitSource.get("add_time"));

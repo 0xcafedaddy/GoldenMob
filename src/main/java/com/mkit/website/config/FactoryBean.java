@@ -21,7 +21,7 @@ public class FactoryBean {
     	if (client != null){
 			return client;
 		}
-    	String host = "idx.goldenlauncher.com";
+    	String host = "idx.goldenmob.com";
 		int port = 9300;
     	Settings settings = Settings.settingsBuilder().put("node.client", true).put("cluster.name","holgaIndexCluster").put("discovery.initial_state_timeout","10s").put("client.transport.ping_timeout", "10s").put("client.transport.sniff", false).build();
     	  client = new TransportClient.Builder().settings(settings).build().addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host), port));

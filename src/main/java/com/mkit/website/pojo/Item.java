@@ -14,6 +14,8 @@ public class Item {
 	private String postDate;
 	private String imgURL;
 	private String uuid;
+	private String keyWords;
+	private String category;
 	
 	
 	public String getTitle() {
@@ -46,10 +48,25 @@ public class Item {
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
+	public String getKeyWords() {
+		return keyWords;
+	}
+	public void setKeyWords(String keyWords) {
+		this.keyWords = keyWords;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	@Override
 	public String toString() {
 		return "Item [title=" + title + ", author=" + author + ", postDate="
-				+ postDate + ", imgURL=" + imgURL + ", uuid=" + uuid + "]";
+				+ postDate + ", imgURL=" + imgURL + ", uuid=" + uuid
+				+ ", keyWords=" + keyWords + ", category=" + category + "]";
 	}
+	
+	
 	
 }

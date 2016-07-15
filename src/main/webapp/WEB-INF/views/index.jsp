@@ -26,7 +26,11 @@
     <body class="en">
         <header >
             <a class="logo" href="/">
-                <span class="svg"><svg class="icon icon-newsdog"><use xlink:href="#icon-newsdog"></use></svg></span>
+                <span class="svg">
+                <svg class="icon icon-newsdog" style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" >
+					<img src="${ctx}/static/img/logo.svg"/>                	
+                </svg>
+                </span>
             </a> 
             <a class="download-app" href="/app">Download App</a>
         </header>
@@ -161,7 +165,7 @@
         
         <c:forEach items="${sessionScope.itemList}" var="item" varStatus="vs">
 		 <section class="one-images">
-			<a href="${ctx}/a/?uuid=${item.uuid}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
+			<a href="${ctx}/a/?uuid=${item.uuid}&category=${item.category}&keywords=${item.keyWords}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
 				<h2 class="title">${item.title }</h2>
 				<div class="images">
 					<span class="image" data-width="200" data-height="350" style="width: 200px; height: 133.333px;">

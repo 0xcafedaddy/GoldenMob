@@ -19,7 +19,9 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.mkit.website.pojo.Article;
+import com.mkit.website.pojo.Item;
 import com.mkit.website.service.ArticleService;
 import com.mkit.website.util.TransToString;
 
@@ -28,7 +30,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Resource(name = "client")
 	private Client client;
-
+	
+	
+	/**
+	 * 查询文章内容
+	 */
 	@Override
 	public Article findArticleById(String uuid) {
 //		QueryBuilder queryBuilder = QueryBuilders.boolQuery().must(
@@ -63,9 +69,65 @@ public class ArticleServiceImpl implements ArticleService {
 			article.setContent((String)content.get("tcontent"));
 			
 		}
-		
-
 		return article;
+	}
+
+	
+	
+	/**
+	 * 查询相关内容
+	 */
+	@Override
+	public List<Item> findRelatedItems(String keywords,String category) {
+		
+		List<Item> relatedItemsList = new ArrayList<Item>();
+		
+		//需要keywords
+		//tid
+		//category
+		
+		String[] includeFields = new String[]{};
+		String[] excludeFields = new String[]{};
+		
+		
+		QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.queryStringQuery(keywords));
+		QueryBuilder queryCategory = QueryBuilders.matchQuery("app_category", category);
+		query =  QueryBuilders.boolQuery().must(query).must(queryCategory);
+		
+		SearchRequestBuilder searchRequestBuilder = client.prepareSearch("holga_index");
+		searchRequestBuilder.setQuery(query).addSort(SortBuilders.fieldSort("add_time").order(SortOrder.DESC));
+		
+		//SearchResponse response = searchRequestBuilder.setFetchSource(includeFields,excludeFields).setFrom(0).setSize(size).execute().actionGet();
+		SearchResponse response = searchRequestBuilder.setFrom(0).setSize(10).execute().actionGet();
+		SearchHits searchHits = response.getHits();//得到总条数
+		SearchHit[] hits = searchHits.getHits();
+		
+		for (int i = 0; i < hits.length; i++) {
+			Item item = new Item();
+			SearchHit hit = hits[i];
+			Map<String, Object> hitSource = hit.getSource();
+			@SuppressWarnings("rawtypes")
+			Map content = (Map) hitSource.get("content");
+			
+			item.setTitle(TransToString.getString(hitSource.get("title")));
+			item.setKeyWords(TransToString.getString(hitSource.get("keywords")));
+			item.setCategory(TransToString.getString(hitSource.get("app_category")));
+			item.setUuid((String) hitSource.get("uuid"));
+			
+			//如果imageList不为空取第一张图片
+			@SuppressWarnings("unchecked")
+			List<Map<String, String>> imageList = (ArrayList<Map<String, String>>) content
+					.get("image");
+			if (imageList != null && imageList.size() != 0) {
+				item.setImgURL(TransToString.getString(imageList.get(0).get(
+						"url")));
+			}
+			relatedItemsList.add(item);
+		}
+		
+		System.out.println(JSON.toJSON(relatedItemsList));
+		
+		return relatedItemsList;
 	}
 
 }

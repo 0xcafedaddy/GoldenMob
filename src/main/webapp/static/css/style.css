@@ -628,7 +628,7 @@ section .image:first-child {
     }
     svg.icon-newsdog {
         position: relative;
-        width: 220px;
+        width: 10px;
         height: 40px;
         fill: #FFF;
         margin: 0;
