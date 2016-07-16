@@ -20,15 +20,21 @@ public class MainController {
 	@Autowired
 	private ItemsService itemsService;
 	
+	
+	/**
+	 * 下载app
+	 * @return
+	 */
+	@RequestMapping(value = {"app"}, method = RequestMethod.GET)
+	public String downloadApp(){
+		return "app";
+	}
+	
 	@RequestMapping(value = {"/", "/index", "index.html", "index.html", "index.jsp"}, method = RequestMethod.GET) 
 	public String index(HttpServletRequest request, HttpServletResponse response,String read_tag,Integer start) {
-		System.out.println("read_tag: "+read_tag);
-		System.out.println("start: "+start);
-		
 		if( read_tag == null || start == null){
 			start = 0;
 		}
-	
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
 		request.getSession().setAttribute("flag", "/");
 		request.getSession().setAttribute("itemList", itemList);
@@ -38,7 +44,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"ent"}, method = RequestMethod.GET) 
 	public String ent(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("ent");
 		if(start == null){
 			start = 0;
 		}
@@ -51,7 +56,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"politic"}, method = RequestMethod.GET) 
 	public String politic(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("politic");
 		if(start == null){
 			start = 0;
 		}
@@ -65,7 +69,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"sports"}, method = RequestMethod.GET) 
 	public String sports(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("sports");
 		if(start == null){
 			start = 0;
 		}
@@ -79,7 +82,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"health"}, method = RequestMethod.GET) 
 	public String health(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("health");
 		if(start == null){
 			start = 0;
 		}
@@ -93,7 +95,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"/life"}, method = RequestMethod.GET) 
 	public String life(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("life");
 		if(start == null){
 			start = 0;
 		}
@@ -106,7 +107,6 @@ public class MainController {
 	
 	@RequestMapping(value = {"/fun"}, method = RequestMethod.GET) 
 	public String fun(HttpServletRequest request, HttpServletResponse response,Integer start){
-		System.out.println("fun");
 		if(start == null){
 			start = 0;
 		}

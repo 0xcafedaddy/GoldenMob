@@ -5,16 +5,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="${ctx}/static/css/style.css">
     <script src="${ctx}/static/js/lib/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="${ctx}/static/css/style.css">
     <script src="${ctx}/static/js/news/index.js"></script>
         <title>
-            NewsDog - Entertainment India News - NewsDog
+            Daily Masala
         </title>
         <meta http-equiv=Content-Type content="text/html;charset=utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${ctx}/static/css/style.css"/>
         <meta property="description" content='xxx is the SMALLEST India news app'/>
         <meta property="keywords" content="India news"/>
         <meta property="og:title" content="NewsDog - Entertainment India News"/>
@@ -32,7 +32,7 @@
                 </svg>
                 </span>
             </a> 
-            <a class="download-app" href="/app">Download App</a>
+            <a class="download-app" href="${ctx}/app">Download App</a>
         </header>
 
         <nav  class="navbar">
@@ -159,13 +159,9 @@
         <div class="articles">
         
         
-			<h5>${item.title }</h5>
-			<img src="${item.imgURL }"></img>
-		
-        
         <c:forEach items="${sessionScope.itemList}" var="item" varStatus="vs">
 		 <section class="one-images">
-			<a href="${ctx}/a/?uuid=${item.uuid}&category=${item.category}&keywords=${item.keyWords}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
+			<a href="${ctx}/share/?id=${item.uuid}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
 				<h2 class="title">${item.title }</h2>
 				<div class="images">
 					<span class="image" data-width="200" data-height="350" style="width: 200px; height: 133.333px;">
@@ -185,7 +181,6 @@
     
         </div>
         </div>
-        <script type="text/javascript" src="http://static.newsdog.today/javascripts/lib/jquery-2.2.3.min.js"></script>
        
     </body>
 </html>

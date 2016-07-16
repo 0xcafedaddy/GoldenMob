@@ -1,6 +1,7 @@
 package com.mkit.website.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,10 +20,10 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSON;
 import com.mkit.website.pojo.Article;
 import com.mkit.website.pojo.Item;
 import com.mkit.website.service.ArticleService;
+import com.mkit.website.util.DateUtil;
 import com.mkit.website.util.TransToString;
 
 @Service("articleService")
@@ -36,10 +37,8 @@ public class ArticleServiceImpl implements ArticleService {
 	 * 查询文章内容
 	 */
 	@Override
-	public Article findArticleById(String uuid) {
-//		QueryBuilder queryBuilder = QueryBuilders.boolQuery().must(
-//				QueryBuilders.matchQuery("uuid", uuid));
-		BoolQueryBuilder lastQuery = QueryBuilders.boolQuery().must(QueryBuilders.idsQuery().ids(uuid));
+	public Article findArticleById(String id) {
+		BoolQueryBuilder lastQuery = QueryBuilders.boolQuery().must(QueryBuilders.idsQuery().ids(id));
 
 		SearchRequestBuilder searchRequestBuilder = client.prepareSearch("holga_index");
 		searchRequestBuilder.setTypes("webpage");
@@ -61,13 +60,12 @@ public class ArticleServiceImpl implements ArticleService {
 
 			article.setTitle(TransToString.getString(hitSource.get("title")));
 			article.setAuthor(TransToString.getString(hitSource.get("author")));
-			article.setAdd_time((String) hitSource.get("add_time"));
-			
-			System.out.println("title:"+i+hitSource.get("title"));
-			
+			Date d = DateUtil.stringToDate((String)hitSource.get("add_time"), DateUtil.YYYYMMDD);
+			article.setAdd_time(DateUtil.format(d, DateUtil.YYYYMMDD));
+			article.setCategory(TransToString.getString(hitSource.get("app_category")));
+			article.setKeywords(TransToString.getString(hitSource.get("keywords")));
 			//获取文章内容
 			article.setContent((String)content.get("tcontent"));
-			
 		}
 		return article;
 	}
@@ -86,9 +84,6 @@ public class ArticleServiceImpl implements ArticleService {
 		//tid
 		//category
 		
-		String[] includeFields = new String[]{};
-		String[] excludeFields = new String[]{};
-		
 		
 		QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.queryStringQuery(keywords));
 		QueryBuilder queryCategory = QueryBuilders.matchQuery("app_category", category);
@@ -97,7 +92,6 @@ public class ArticleServiceImpl implements ArticleService {
 		SearchRequestBuilder searchRequestBuilder = client.prepareSearch("holga_index");
 		searchRequestBuilder.setQuery(query).addSort(SortBuilders.fieldSort("add_time").order(SortOrder.DESC));
 		
-		//SearchResponse response = searchRequestBuilder.setFetchSource(includeFields,excludeFields).setFrom(0).setSize(size).execute().actionGet();
 		SearchResponse response = searchRequestBuilder.setFrom(0).setSize(10).execute().actionGet();
 		SearchHits searchHits = response.getHits();//得到总条数
 		SearchHit[] hits = searchHits.getHits();
@@ -124,8 +118,6 @@ public class ArticleServiceImpl implements ArticleService {
 			}
 			relatedItemsList.add(item);
 		}
-		
-		System.out.println(JSON.toJSON(relatedItemsList));
 		
 		return relatedItemsList;
 	}

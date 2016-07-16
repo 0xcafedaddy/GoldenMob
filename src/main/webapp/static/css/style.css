@@ -79,7 +79,7 @@ p {
 }
 
 a {
-    color: #E60033;
+    color: #9a0006;
     text-decoration: none;
     border: none;
     outline: none;
@@ -138,7 +138,7 @@ svg.icon-newsdog {
 }
 
 header {
-    background-color: #e70034;
+    background-color: #9a0006;
     height: 50px;
     position: fixed;
     left: 0;
@@ -216,8 +216,8 @@ nav ul li {
 }
 
 nav ul li.on {
-    color: #E60033;
-    border-bottom: 3px solid #E60033;
+    color: #9a0006;
+    border-bottom: 3px solid #9a0006;
 }
 
 nav ul li a {
@@ -228,7 +228,7 @@ nav ul li a {
 }
 
 nav ul li.on a {
-    color: #E60033;
+    color: #9a0006;
 }
 
 #articles-wrapper {
@@ -354,12 +354,13 @@ section.one-images a .images {
     top: 10px;
 }
 
+
 section .image {
     display: inline-block;
     margin-left: 10px;
     overflow: hidden;
     background-color: #D8D8D8;
-    background-image: url('http://static.newsdog.today/article/images/logo.svg');
+    background-image: url('../img/post.svg');
     background-size: 30px 30px;
     background-repeat: no-repeat;
     background-position: center;
@@ -502,7 +503,7 @@ section .image:first-child {
 }
 
 .bar .text span b {
-    color: #E60033;
+    color: #9a0006;
 }
 
 .bar .app_download {
@@ -512,7 +513,7 @@ section .image:first-child {
     display: block;
     height: 30px;
     border-radius: 4px;
-    background-color: #ed3d64;
+    background-color: #9a0006;
     color: #FFF;
     font-size: 16px;
     line-height: 29px;
@@ -545,7 +546,7 @@ section .image:first-child {
         margin-left: -320px;
     }*/
     section a:hover .title {
-        color: #E60033;
+        color: #9a0006;
     }
     section a:visited .title {
         color: #999;
@@ -678,7 +679,7 @@ section .image:first-child {
     }
     .download-app:hover {
         background-color: #FFF;
-        color: #E60033;
+        color: #9a0006;
     }
     nav {
         width: 100%;
@@ -693,7 +694,7 @@ section .image:first-child {
         float: left;
         background-color: #FFF;
         box-shadow: none;
-        border-right: 1px solid #E60033;
+        border-right: 1px solid #9a0006;
         bottom: 0;
         padding-top: 20px;
     }
@@ -721,13 +722,13 @@ section .image:first-child {
         padding: 0 10px;
         color: #787878;
         font-weight: 600;
-        border-left: 0px solid #E60033;
+        border-left: 0px solid #9a0006;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
     }
     nav ul li.on a {
-        color: #E60033;
-        border-left: 5px solid #E60033;
+        color: #9a0006;
+        border-left: 5px solid #9a0006;
     }
     #articles-wrapper {
         /*position: absolute;

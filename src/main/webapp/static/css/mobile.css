@@ -130,7 +130,7 @@ footer {
 }
 
 .bar .text span b {
-    color: #E60033;
+    color: #9a0006;
 }
 
 .bar .app_download {
@@ -140,7 +140,7 @@ footer {
     display: block;
     height: 30px;
     border-radius: 4px;
-    background-color: #ed3d64;
+    background-color: #9a0006;
     color: #FFF;
     font-size: 16px;
     line-height: 29px;
@@ -442,9 +442,11 @@ pre code {
     display: block;
 }
 
+/*
 article .showAllNews {
     display: none;
 }
+*/
 
 article.longArticle {
     overflow: hidden;
@@ -453,6 +455,7 @@ article.longArticle {
     padding-bottom: 3em;
 }
 
+/*
 article.longArticle::after {
     position: absolute;
     bottom: 0em;
@@ -463,6 +466,7 @@ article.longArticle::after {
     content: " ";
     z-index: 1;
 }
+
 
 article.longArticle .showAllNews {
     z-index: 100;
@@ -484,9 +488,11 @@ article.longArticle .showAllNews {
     border-radius: 2px;
 }
 
+
 article.longArticle .showAllNews:active {
     background-color: #F0F0F0;
 }
+*/
 
 .related_articles_header {
     word-wrap: break-word;
@@ -577,13 +583,13 @@ ul.related_articles li span.related_articles_tag {
 }
 
 ul.related_articles li span.related_articles_tag:after {
-    content: "Read more on NewsDog";
+    content: "Read more on Daily Masala";
     display: inline-block;
-    border: 1px solid #e70034;
+    border: 1px solid #9a0006;
     font-size: 8px;
     line-height: 1em;
     padding: 3px 5px;
-    color: #e70034;
+    color: #9a0006;
     border-radius: 3px;
 }
 
@@ -808,6 +814,7 @@ ul.related_articles li span.related_articles_tag:after {
     background-image: -webkit-linear-gradient( 90deg, rgba(44, 44, 44, 1) 60%, rgba(44, 44, 44, 0) 100%);
 }
 
+/*
 .NightMode article.longArticle .showAllNews {
     border: 1px solid #464646;
     background-color: #3C3C3C;
@@ -816,6 +823,7 @@ ul.related_articles li span.related_articles_tag:after {
 .NightMode article.longArticle .showAllNews:active {
     background-color: #323232;
 }
+*/
 
 .logo {
     font-size: 0px;
@@ -840,7 +848,7 @@ svg.icon-newsdog {
 }
 
 nav {
-    background-color: #e70034;
+    background-color: #9a0006;
     height: 50px;
     position: fixed;
     left: 0;
@@ -925,8 +933,8 @@ nav {
 }
 
 .navbar ul li.on {
-    color: #E60033;
-    border-bottom: 3px solid #E60033;
+    color: #9a0006;
+    border-bottom: 3px solid #9a0006;
 }
 
 .navbar ul li a {
@@ -937,7 +945,7 @@ nav {
 }
 
 .navbar ul li.on a {
-    color: #E60033;
+    color: #9a0006;
 }
 
 @media only screen and (min-width: 940px) {
@@ -1036,7 +1044,7 @@ nav {
     }
     .download-app:hover {
         background-color: #FFF;
-        color: #E60033;
+        color: #9a0006;
     }
     .nav-hidden {
         height: 80px;
@@ -1060,7 +1068,7 @@ nav {
         float: left;
         background-color: #FFF;
         box-shadow: none;
-        border-right: 1px solid #E60033;
+        border-right: 1px solid #9a0006;
         bottom: 0;
         padding-top: 20px;
         display: block;
@@ -1089,12 +1097,12 @@ nav {
         padding: 0 10px;
         color: #787878;
         font-weight: 600;
-        border-left: 0px solid #E60033;
+        border-left: 0px solid #9a0006;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
     }
     .navbar ul li.on a {
-        color: #E60033;
-        border-left: 5px solid #E60033;
+        color: #9a0006;
+        border-left: 5px solid #9a0006;
     }
 }

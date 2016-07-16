@@ -25,41 +25,18 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
-	//525b75c5b7388c5fe13fd8fb0762e431
-	//526d43eef3a717f74ed44474c3adb22c
 	
-	@RequestMapping(value = "a", method = RequestMethod.GET)
-	public String findArticleById(String uuid,String category,String keywords,HttpServletRequest request){
-		
-		String userAgent = request.getHeader("user-agent");
-		
-//		if(userAgent.contains("iPhone") || userAgent.contains("Android") ){
-//			//System.out.println("手机用户");
-//			Article article = articleService.findArticleById(uuid);
-//			List<Item> relatedItem = articleService.findRelatedItems(keywords, category);
-//			request.getSession().setAttribute("article", article);
-//			request.getSession().setAttribute("relatedItem", relatedItem);
-//			return "phoneArticle";
-//			
-//		}else{
-			//System.out.println("电脑用户");
-			Article article = articleService.findArticleById(uuid);
-			List<Item> relatedItem = articleService.findRelatedItems(keywords, category);
+	@RequestMapping(value = "share", method = RequestMethod.GET)
+	public String findArticleById(String id,String category,String keywords,String imie,HttpServletRequest request){
+			Article article = articleService.findArticleById(id);
+			
+			if(article.getKeywords()!= null && article.getCategory() !=null ){
+				List<Item> relatedItem = articleService.findRelatedItems(article.getKeywords(), article.getCategory());
+				request.getSession().setAttribute("relatedItem", relatedItem);
+			}
 			request.getSession().setAttribute("article", article);
-			request.getSession().setAttribute("relatedItem", relatedItem);
 			return "article";
-//		}
-		
-		
-//		System.out.println("uuid:"+uuid);
-//		System.out.println("category:"+category);
-//		System.out.println("keywords:"+keywords);
-		
 	}
-	
-	
-	
-	
 	
 	
 }

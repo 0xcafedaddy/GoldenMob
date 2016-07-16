@@ -20,5 +20,4 @@ public interface ItemsDao extends Repository<Item,String>{
 	List<Item> findByCategory(String app_category);
 	
 	
-	
 }

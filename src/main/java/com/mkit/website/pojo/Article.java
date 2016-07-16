@@ -5,6 +5,8 @@ public class Article {
 	private String add_time;
 	private String author;
 	private String content;
+	private String category;
+	private String keywords;
 	
 	public String getTitle() {
 		return title;
@@ -30,11 +32,24 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
 	
 	@Override
 	public String toString() {
 		return "Article [title=" + title + ", add_time=" + add_time
-				+ ", author=" + author + ", content=" + content + "]";
+				+ ", author=" + author + ", content=" + content + ", category="
+				+ category + ", keywords=" + keywords + "]";
 	}
 
 }
