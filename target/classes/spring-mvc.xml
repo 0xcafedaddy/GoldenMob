@@ -37,15 +37,8 @@
 	    <mvc:interceptor>
 	        <mvc:mapping path="/*" />
 	        <mvc:mapping path="/main/*" />
-	        <mvc:mapping path="/usermanager/*" />
-	        <mvc:mapping path="/rolemanager/*" />
-	        <mvc:mapping path="/privmanager/*" />
-	        <mvc:mapping path="/productmanager/*" />
-	        <mvc:mapping path="/profitmanager/*" />
-	        <mvc:mapping path="/financialStatementmanager/*" />
 	        <mvc:exclude-mapping path="/"/> 
-	        <mvc:exclude-mapping path="/login"/> 
-	        <mvc:exclude-mapping path="/login.ajax"/> 
+	        <mvc:exclude-mapping path="/detial"/> 
 	        <bean class="com.mkit.website.interceptor.SecurityInterceptor"></bean>
 	    </mvc:interceptor>
 	</mvc:interceptors>

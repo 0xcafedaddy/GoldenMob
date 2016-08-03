@@ -214,13 +214,13 @@
 		</dependency>
 		
 		<!-- Mysql驱动，使用JNDI，去掉 -->
-		<!-- 
+		 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
  			<version>5.1.34</version>
  		</dependency>
- 		 -->
+ 		
  		 
  		<!-- DBCP2相关依赖 -->
 		<dependency>

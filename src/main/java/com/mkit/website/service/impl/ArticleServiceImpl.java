@@ -1,7 +1,10 @@
 package com.mkit.website.service.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +26,7 @@ import org.springframework.stereotype.Service;
 import com.mkit.website.pojo.Article;
 import com.mkit.website.pojo.Item;
 import com.mkit.website.service.ArticleService;
-import com.mkit.website.util.DateUtil;
+import com.mkit.website.util.JdbcUtil;
 import com.mkit.website.util.TransToString;
 
 @Service("articleService")
@@ -60,12 +63,20 @@ public class ArticleServiceImpl implements ArticleService {
 
 			article.setTitle(TransToString.getString(hitSource.get("title")));
 			article.setAuthor(TransToString.getString(hitSource.get("author")));
-			Date d = DateUtil.stringToDate((String)hitSource.get("add_time"), DateUtil.YYYYMMDD);
-			article.setAdd_time(DateUtil.format(d, DateUtil.YYYYMMDD));
+			//Date d = DateUtil.stringToDate((String)hitSource.get("add_time"), DateUtil.YYYYMMDD);
+			//article.setAdd_time(DateUtil.format(d, DateUtil.YYYYMMDD));
 			article.setCategory(TransToString.getString(hitSource.get("app_category")));
 			article.setKeywords(TransToString.getString(hitSource.get("keywords")));
 			//获取文章内容
 			article.setContent((String)content.get("tcontent"));
+			//设置文章首图片地址
+			@SuppressWarnings("unchecked")
+			List<Map<String, String>> imageList = (ArrayList<Map<String, String>>) content
+					.get("image");
+			if (imageList != null && imageList.size() != 0) {
+				article.setImgURL(TransToString.getString(imageList.get(0).get(
+						"url")));
+			}
 		}
 		return article;
 	}
@@ -120,6 +131,72 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		
 		return relatedItemsList;
+	}
+
+
+
+	@Override
+	public int addUserInfo(String dir, String uuid, String deviceId) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "insert into masala_user(dir,uuid,deviceId) values(?,?,?)";
+		
+		try {
+			conn =JdbcUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			// 根据传入的参数来完善这条SQL语句
+			ps.setObject(1,dir);
+			ps.setObject(2,uuid);
+			ps.setObject(3,deviceId);
+			// 执行这条SQL语句
+			return ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}finally{
+			JdbcUtil.free(null, ps, conn);
+		}
+}
+
+
+
+	@Override
+	public boolean findUserInfo(String dir, String uuid, String deviceId) {
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "select dir,uuid,deviceId from masala_user where dir= ? and uuid = ? and deviceId = ?";
+		boolean flag = false;
+		try {
+			conn =JdbcUtil.getConnection();
+			ps = conn.prepareStatement(sql);
+			ResultSet rs = null;
+			// 根据传入的参数来完善这条SQL语句
+			ps.setObject(1,dir);
+			ps.setObject(2,uuid);
+			ps.setObject(3,deviceId);
+			// 执行这条SQL语句
+			rs = ps.executeQuery();
+			
+			if(rs.next()){
+//				if(rs.getString("dir").equals(dir) && rs.getString("uuid").equals(uuid) && rs.getString("deviceId").equals(deviceId)){
+					flag = false;
+//				}else{
+//					flag = true;
+//				}
+			}else{
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			flag = false;
+		}finally{
+			JdbcUtil.free(null, ps, conn);
+		}
+		return flag;
 	}
 
 }

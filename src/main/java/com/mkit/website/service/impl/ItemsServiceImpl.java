@@ -1,7 +1,6 @@
 package com.mkit.website.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import com.mkit.website.pojo.Item;
 import com.mkit.website.service.ItemsService;
-import com.mkit.website.util.DateUtil;
 import com.mkit.website.util.TransToString;
 
 
@@ -70,8 +68,8 @@ public class ItemsServiceImpl implements ItemsService{
 			item.setCategory(TransToString.getString(hitSource.get("app_category")));
 			item.setTitle(TransToString.getString(hitSource.get("title")));
 			item.setAuthor(TransToString.getString(hitSource.get("author")));
-			Date d = DateUtil.stringToDate((String)hitSource.get("add_time"), DateUtil.YYYYMMDD);
-			item.setPostDate(DateUtil.format(d, DateUtil.YYYYMMDD));
+			//Date d = DateUtil.stringToDate((String)hitSource.get("add_time"), DateUtil.YYYYMMDD);
+			//item.setPostDate(DateUtil.format(d, DateUtil.YYYYMMDD));
 			//item.setPostDate((String) hitSource.get("add_time"));
 			item.setUuid((String) hitSource.get("uuid"));
 

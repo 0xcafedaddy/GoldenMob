@@ -5,6 +5,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="shortcut icon" href="${ctx }/static/img/favicon.ico">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-81626726-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+    
     <script src="${ctx}/static/js/lib/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="${ctx}/static/css/style.css">
     <script src="${ctx}/static/js/news/index.js"></script>
@@ -15,19 +28,13 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
         <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" type="text/css" href="${ctx}/static/css/style.css"/>
-        <meta property="description" content='xxx is the SMALLEST India news app'/>
-        <meta property="keywords" content="India news"/>
-        <meta property="og:title" content="NewsDog - Entertainment India News"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:type" content="site"/>
-        <meta property="og:image" content=""/>
      
     </head>
     <body class="en">
         <header >
             <a class="logo" href="/">
                 <span class="svg">
-                <svg class="icon icon-newsdog" style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" >
+                <svg class="icon icon-masala" style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" >
 					<img src="${ctx}/static/img/logo.svg"/>                	
                 </svg>
                 </span>
@@ -161,7 +168,7 @@
         
         <c:forEach items="${sessionScope.itemList}" var="item" varStatus="vs">
 		 <section class="one-images">
-			<a href="${ctx}/share/?id=${item.uuid}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
+			<a href="${ctx}/detial/?id=${item.uuid}" target="_blank" style="min-height: 153.333px; padding-right: 210px;">
 				<h2 class="title">${item.title }</h2>
 				<div class="images">
 					<span class="image" data-width="200" data-height="350" style="width: 200px; height: 133.333px;">

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mkit.website.pojo.Item;
 import com.mkit.website.service.ItemsService;
+
 
 
 @Controller
@@ -31,10 +33,8 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = {"/", "/index", "index.html", "index.html", "index.jsp"}, method = RequestMethod.GET) 
-	public String index(HttpServletRequest request, HttpServletResponse response,String read_tag,Integer start) {
-		if( read_tag == null || start == null){
-			start = 0;
-		}
+	public String index(HttpServletRequest request, HttpServletResponse response,String read_tag,@RequestParam(value = "start", defaultValue = "0") Integer start) {
+		
 		List<Item> itemList  = itemsService.findByCategory(read_tag,start);
 		request.getSession().setAttribute("flag", "/");
 		request.getSession().setAttribute("itemList", itemList);

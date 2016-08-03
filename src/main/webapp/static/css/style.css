@@ -129,7 +129,7 @@ svg.icon-facebook {
     margin: 0;
 }
 
-svg.icon-newsdog {
+svg.icon-masala {
     position: relative;
     width: 120px;
     height: 25px;
@@ -627,7 +627,7 @@ section .image:first-child {
         display: inline-block;
         height: 40px;
     }
-    svg.icon-newsdog {
+    svg.icon-masala {
         position: relative;
         width: 10px;
         height: 40px;

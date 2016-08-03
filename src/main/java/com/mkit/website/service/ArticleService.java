@@ -24,4 +24,12 @@ public interface ArticleService {
 	 */
 	public List<Item> findRelatedItems(String keywords,String category);
 	
+	
+	public int addUserInfo(String dir,String uuid,String deviceId);
+
+	
+	public boolean findUserInfo(String dir,String uuid,String deviceId);
+	
+	
+	
 }

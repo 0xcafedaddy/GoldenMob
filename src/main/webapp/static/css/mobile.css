@@ -839,7 +839,7 @@ ul.related_articles li span.related_articles_tag:after {
     height: 25px;
 }
 
-svg.icon-newsdog {
+svg.icon-masala {
     position: relative;
     width: 170px;
     height: 25px;
@@ -991,7 +991,7 @@ nav {
         fill: #3b5998;
         margin: 0;
     }
-    svg.icon-newsdog {
+    svg.icon-masala {
         position: relative;
         width:270px;
         height: 40px;
